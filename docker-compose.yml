@@ -17,13 +17,13 @@ services:
       dockerfile: docker/django/Dockerfile
     command: docker/django/start.sh
     volumes:
-      - .:/apps
+      - .:/app
       - staticfiles:/opt/video_converter/staticfiles
       - media:/opt/video_converter/media
     env_file:
       - .env
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - db
 

@@ -1,3 +1,5 @@
+import os
+
 import environ
 import dj_database_url
 
@@ -19,6 +21,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+
+    # local
+    'video_converter',
 ]
 
 MIDDLEWARE = [
@@ -87,4 +94,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(ROOT_DIR, 'static/'),
+)
