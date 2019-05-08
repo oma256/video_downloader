@@ -5,6 +5,8 @@ services:
     container_name: converter_db
     image: postgres:10.1-alpine
     restart: always
+    ports:
+      - "5432:5432"
     env_file:
       - .env
     volumes:

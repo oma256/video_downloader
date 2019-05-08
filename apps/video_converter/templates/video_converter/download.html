@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12 mb-5">
-        <h1 class="display-2 text-center">Скачивание видео с <span style="color: #ff6699; font-weight: bold;">YouTube</span></h1>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
     </div>
 </div>
 <div class="row">
@@ -12,7 +12,7 @@
         <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" value="Проверка" class="btn btn-info btn-block">
+            <input type="submit" value="Скачать" class="btn btn-info btn-block">
         </form>
     </div>
 </div>
