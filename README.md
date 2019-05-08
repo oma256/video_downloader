@@ -1,29 +1,26 @@
-Video downloder
-==============================
-______________________________
-Features
-------------------------
-* Django 2.1+
-* PostgreSQL database support with psycopg2
+# YouTube video converter and downloder
 
-installation and start project
-------------------------
+## Run via docker
 1. Install docker and docker-compose
-2. Create .env file for environment variables:
+```.bash
+$ sudo pacman -S docker
+$ sudo pacman -S docker-compose
 ```
-    # DJANGO
-    DJANGO_DEBUG=True
-    DJANGO_SECRET_KEY=''
-    DJANGO_ALLOWED_HOST=0.0.0.0
-    DEFAULT_DATABASE_URL=postgres://db_user:db_password@db:5432/db_name
-     
-    # POSTGRES
-    POSTGRES_USER=db_user
-    POSTGRES_PASSWORD=db_password
-    POSTGRES_DB=db_name
-    PGDATA=/var/lib/postgresql/data
+2. Start project
+```.bash
+$ docker-compose up --build
 ```
-3. run the project as a command:
-    ```sh
-    $ docker-compose up --build
-    ```
+
+### Environment variables 
+Сreate .env file at the root of the project, and enter the following variables
+
+| Key    | Description   |    Default value  |
+| :---         |     :---      |          :--- |
+| `DJANGO_SECRET_KEY`  | my secret key  | secret-key              |
+| `DJANGO_DEBUG`  | Debug mode True or False  | True              |
+| `DJANGO_ALLOWED_HOST`| Allowed host | 0.0.0.0,127.0.0.1 |
+| `DEFAULT_DATABASE_URL`  | postgres://user:password@host:port/database_name | postgres://postgres:postgres@db:5432/video_converter |
+| `POSTGRES_USER`  | Postgres username |   postgres   |
+| `POSTGRES_PASSWORD`  | Postgres password |  postgres    |
+| `POSTGRES_DB`  | Postgres database name | video-converter-db |
+| `PGDATA`  | Postgres volume | /var/lib/postgresql/data |

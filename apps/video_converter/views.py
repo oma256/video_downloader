@@ -1,10 +1,9 @@
 from django.shortcuts import render,redirect
-from django.http import JsonResponse
+from django.http import HttpResponsePermanentRedirect
 
-import youtube_dl as yt
+import youtube_dl
 
 from .forms import DownloadForm
-from .models import QueryHistory
 
 
 def redirect_page(request):
@@ -15,14 +14,26 @@ def index(request):
     if request.method == 'POST':
         form = DownloadForm(request.POST)
         if form.is_valid():
-            link = form.cleaned_data.get('link')
-            if 'https://www.youtube.com/watch?v=' in link:
-                QueryHistory.objects.create(**form.cleaned_data)
-                return redirect('video_converter:download')
-        return redirect('video_converter:index')
+            url = form.cleaned_data.get('url')
+            options = {
+                'outtmpl': '%(title)s-%(id)s.%(ext)s',
+                'format': 'best'
+            }
+
+            with youtube_dl.YoutubeDL(options) as ydl:
+                r = ydl.extract_info(url, download=False)
+                video_url = r['url']
+                print(video_url)
+                form.save()
+                file_name = 'video.mp4'
+                r = HttpResponsePermanentRedirect(video_url)
+                r['Content-Type'] = 'application/force-download'
+                r['Content-Disposition'] = f'attachment; filename={file_name}'
+
+                return r
+        return render(request, 'video_converter/index.html', {'form': form})
     form = DownloadForm()
     return render(request, 'video_converter/index.html', {'form': form})
 
 
-def download(request):
-    return render(request, 'video_converter/download.html', {})
+

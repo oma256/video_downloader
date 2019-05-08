@@ -4,7 +4,7 @@ from .models import QueryHistory
 
 
 class QueryHistoryAdmin(admin.ModelAdmin):
-    list_display = ('link', 'query_date')
+    list_display = ('url', 'query_date')
 
 
 admin.site.register(QueryHistory, QueryHistoryAdmin)

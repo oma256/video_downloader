@@ -6,4 +6,4 @@ django-environ==0.4.5
 pafy==0.5.4
 psycopg2-binary==2.8.2
 pytz==2018.7
-youtube-dl==2018.11.7
+youtube-dl==2019.4.30
