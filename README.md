@@ -1,4 +1,6 @@
-# YouTube video converter and downloder
+
+YouTube video converter and downloder
+==============================
 
 ## Run via docker
 1. Install docker and docker-compose
