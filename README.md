@@ -1,4 +1,4 @@
-Video downloder
+YouTube video converter and downloder
 ==============================
 ______________________________
 Features
