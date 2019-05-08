@@ -14,9 +14,7 @@ services:
   backend:
     container_name: converter_backend
     restart: always
-    build:
-      context: .
-      dockerfile: docker/django/Dockerfile
+    image: oma256/youtube-backend
     command: docker/django/start.sh
     volumes:
       - .:/app
