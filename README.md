@@ -3,12 +3,7 @@ YouTube video converter and downloder
 ==============================
 
 ## Run via docker
-1. Install docker and docker-compose
-```.bash
-$ sudo pacman -S docker
-$ sudo pacman -S docker-compose
-```
-2. Start project
+
 ```.bash
 $ docker-compose up --build
 ```
