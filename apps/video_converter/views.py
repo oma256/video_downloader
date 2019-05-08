@@ -6,10 +6,6 @@ import youtube_dl
 from .forms import DownloadForm
 
 
-def redirect_page(request):
-    return redirect('video_converter:index')
-
-
 def index(request):
     if request.method == 'POST':
         form = DownloadForm(request.POST)
