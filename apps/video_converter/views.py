@@ -1,11 +1,13 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.http import HttpResponsePermanentRedirect
 
 import youtube_dl
+from celery import shared_task
 
 from .forms import DownloadForm
 
 
+@shared_task
 def index(request):
     if request.method == 'POST':
         form = DownloadForm(request.POST)

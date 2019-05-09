@@ -2,6 +2,7 @@ import os
 
 import environ
 import dj_database_url
+from celery.schedules import crontab
 
 env = environ.Env()
 
@@ -22,10 +23,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'crispy_forms',
-
     # local
     'video_converter',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -102,3 +103,10 @@ STATICFILES_DIRS = (
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
