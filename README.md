@@ -1,5 +1,5 @@
 
-YouTube video converter and downloder
+YouTube video downloder
 ==============================
 
 ## Run via docker
