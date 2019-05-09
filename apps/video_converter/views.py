@@ -7,7 +7,6 @@ from celery import shared_task
 from .forms import DownloadForm
 
 
-@shared_task
 def index(request):
     if request.method == 'POST':
         form = DownloadForm(request.POST)
