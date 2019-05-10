@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponsePermanentRedirect
 
 import youtube_dl
-from celery import shared_task
 
 from .forms import DownloadForm
 
