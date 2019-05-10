@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db:
-    container_name: converter_db
+    container_name: video_downloader_db
     image: postgres:10.1-alpine
     restart: always
     ports:
@@ -12,9 +12,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
   backend:
-    container_name: converter_backend
+    container_name: video_downloader_backend
     restart: always
-    image: oma256/youtube-backend
+    image: oma256/video-downloader
     command: docker/django/start.sh
     volumes:
       - .:/app
