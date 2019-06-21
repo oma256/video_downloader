@@ -14,7 +14,9 @@ services:
   backend:
     container_name: video_downloader_backend
     restart: always
-    image: oma256/video-downloader
+    build:
+      context: .
+      dockerfile: docker/django/Dockerfile
     command: docker/django/start.sh
     volumes:
       - .:/app
