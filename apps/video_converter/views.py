@@ -18,7 +18,6 @@ def index(request):
                 with youtube_dl.YoutubeDL(options) as ydl:
                     r = ydl.extract_info(url, download=False)
                     video_url = r['url']
-                    print(video_url)
                     form.save()
                     file_name = 'video.mp4'
                     r = HttpResponsePermanentRedirect(video_url)
